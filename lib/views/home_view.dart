@@ -87,60 +87,38 @@ class HomeView extends StatelessWidget {
                 onTap: (value) {
                   print(value); // Evento que se dispara al seleccionar un elemento del carrusel.
                 },
-                children: [ // Lista de elementos dentro del carrusel.
+                // Contenedores del carrusel con imágenes reemplazando el texto.
+                children: [
                   Container(
-                    color: Colors.blueAccent, // Fondo azul.
-                    child: Center(
-                      child: Text(
-                        "Material Components", // Texto del primer elemento.
-                        style: TextStyle(
-                          color: Colors.white, // Texto blanco.
-                          fontSize: 45, // Tamaño de fuente grande.
-                        ),
-                        textAlign: TextAlign.center, // Texto centrado.
-                      ),
+                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
+                    child: Image.network(
+                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png", // URL de la imagen.
+                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
                     ),
                   ),
                   Container(
-                    color: Colors.blueAccent, // Fondo azul.
-                    child: Center(
-                      child: Text(
-                        "Layout", // Texto del segundo elemento.
-                        style: TextStyle(
-                          color: Colors.white, // Texto blanco.
-                          fontSize: 45, // Tamaño de fuente grande.
-                        ),
-                        textAlign: TextAlign.center, // Texto centrado.
-                      ),
+                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
+                    child: Image.network(
+                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png", // URL de la imagen.
+                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
                     ),
                   ),
                   Container(
-                    color: Colors.blueAccent, // Fondo azul.
-                    child: Center(
-                      child: Text(
-                        "Input", // Texto del tercer elemento.
-                        style: TextStyle(
-                          color: Colors.white, // Texto blanco.
-                          fontSize: 45, // Tamaño de fuente grande.
-                        ),
-                        textAlign: TextAlign.center, // Texto centrado.
-                      ),
+                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
+                    child: Image.network(
+                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png", // URL de la imagen.
+                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
                     ),
                   ),
                   Container(
-                    color: Colors.blueAccent, // Fondo azul.
-                    child: Center(
-                      child: Text(
-                        "Painting and Effects", // Texto del cuarto elemento.
-                        style: TextStyle(
-                          color: Colors.white, // Texto blanco.
-                          fontSize: 45, // Tamaño de fuente grande.
-                        ),
-                        textAlign: TextAlign.center, // Texto centrado.
-                      ),
+                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
+                    child: Image.network(
+                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_4.png", // URL de la imagen.
+                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
                     ),
                   ),
                 ],
+
               ),
             ),
 
