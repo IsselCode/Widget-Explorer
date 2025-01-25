@@ -43,7 +43,30 @@ class HomeView extends StatelessWidget {
         // backgroundColor: Colors.red,
         /// Mostrar propiedad:
         // centerTitle: true,
-
+      ),
+      // Se define el cuerpo de la vista principal con un Padding para agregar espacio alrededor.
+      body: Padding(
+        padding: const EdgeInsets.all(16.0), // Agrega un margen uniforme de 16 píxeles alrededor del contenido.
+        child: Column(
+          children: [
+            // Se agrega un TextField para el campo de búsqueda.
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Buscar Widget", // Texto de sugerencia que indica la función del campo.
+                filled: true,  // Activa el fondo relleno del TextField.
+                fillColor: Colors.white, // Color de fondo blanco para resaltar el campo.
+                prefixIcon: Icon(
+                  Icons.search, // Ícono de búsqueda colocado a la izquierda del campo.
+                  color: Colors.grey, // Color gris para el ícono.
+                ),
+                border: OutlineInputBorder(
+                 borderSide: BorderSide.none, // Sin bordes visibles.
+                 borderRadius: BorderRadius.circular(20) // Bordes redondeados para un diseño moderno.
+                )
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

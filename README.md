@@ -1,39 +1,22 @@
-# Capítulo 3: Widget Padding e IconButton
+# Capítulo 4: Widget TextField
 
 ## Objetivo
 
-En este capítulo, aprenderás a utilizar los widgets **Padding** e **IconButton** en Flutter. Se implementará un botón icónico dentro del **AppBar**, que será envuelto en un **Padding** para separarlo del borde. Además, se personalizarán los colores del **Scaffold** y del **AppBar** para que el botón sea visible, resaltando su funcionalidad.
+En este capítulo, aprenderás a implementar un **TextField** en el cuerpo (*body*) de la aplicación. Este campo funcionará como un buscador de widgets, diseñado con un estilo moderno y funcional.
 
 ---
 
 ## Desarrollo
 
-### Paso 1: Modificar el AppBar para incluir un IconButton
-1. Dentro del **AppBar** de la vista principal, agrega un **IconButton** en la propiedad `actions`. Este botón permitirá realizar alguna acción.
-2. El botón será un ícono de notificacion con un fondo blanco para que contraste con el fondo del **AppBar**.
-
----
-
-### Paso 2: Agregar Padding al IconButton
-1. Envuelve el **IconButton** con un widget **Padding** para separarlo del borde derecho del **AppBar**.
-2. Define un valor adecuado de `padding` (como `EdgeInsets.only(right: 16.0)`) para crear un diseño limpio y estético.
-
----
-
-### Paso 3: Cambiar los colores del Scaffold y el AppBar
-1. Cambia el color del **Scaffold** para darle un fondo que contraste con el contenido.
-2. Ajusta el color del **AppBar** para que el ícono del **IconButton** sea completamente visible.
-
----
-
-### Paso 4: Verificar los cambios
-1. Asegúrate de que los colores del fondo y del botón sean consistentes y visualmente agradables.
-2. Prueba el botón para confirmar que su funcionalidad y diseño son correctos.
+1. Se agregó un **TextField** en el cuerpo de la vista principal para crear un campo de búsqueda.
+2. Se personalizó el diseño del **TextField**, incluyendo un texto de sugerencia (*hintText*), un fondo blanco, un ícono de búsqueda y bordes redondeados.
+3. Se utilizó un **Padding** para agregar espacio uniforme alrededor del campo.
+4. Se colocó el **TextField** dentro de una **Column** para estructurar mejor la vista y permitir futuras expansiones.
 
 ---
 
 ## Conclusión
 
-En este capítulo, hemos explorado el uso de los widgets **Padding** e **IconButton** para mejorar el diseño y la funcionalidad del **AppBar**. También aprendimos a personalizar los colores del **Scaffold** y del **AppBar**, asegurándonos de que los elementos sean claramente visibles y estéticamente agradables.
+Este capítulo introduce el widget **TextField** como un elemento clave en la interfaz, proporcionando un campo de búsqueda funcional y visualmente atractivo. La personalización aplicada mejora la experiencia del usuario y sienta las bases para incorporar más funcionalidades en el futuro.
 
-Estos ajustes no solo mejoran la apariencia de la aplicación, sino que también demuestran cómo pequeños detalles en el diseño pueden tener un gran impacto en la experiencia del usuario. En el próximo capítulo, profundizaremos en el uso de más widgets para construir interfaces dinámicas y funcionales. ¡Sigue construyendo y aprendiendo! 🚀
+En los próximos capítulos, exploraremos más widgets y conceptos avanzados para continuar enriqueciendo la aplicación. ¡Sigue aprendiendo y desarrollando! 🚀
