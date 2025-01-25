@@ -64,7 +64,86 @@ class HomeView extends StatelessWidget {
                  borderRadius: BorderRadius.circular(20) // Bordes redondeados para un diseño moderno.
                 )
               ),
-            )
+            ),
+
+            // Espaciado adicional antes del carrusel.
+            const SizedBox(height: 20,),
+
+            // Contenedor del Carousel View.
+            SizedBox(
+              height: 400, // Altura del carrusel.
+              // Ejemplo del uso de un constructor nombrado "weighted".
+              child: CarouselView.weighted(
+                // Controlador opcional para gestionar la posición del carrusel.
+                // controller: CarouselController(),
+                itemSnapping: true, // Permite al carrusel alinear los elementos automáticamente al desplazarse.
+                /*
+                Pesos flexibles para ajustar la proporción de las áreas visibles.
+                El espacio disponible se divide en 9 partes totales (1 + 7 + 1).
+                El primer y tercer elementos recibirán 1/9 parte del espacio cada uno.
+                El elemento del medio recibirá 7/9 partes del espacio, ocupando la mayor proporción.
+                */
+                flexWeights: const [1, 7, 1],
+                onTap: (value) {
+                  print(value); // Evento que se dispara al seleccionar un elemento del carrusel.
+                },
+                children: [ // Lista de elementos dentro del carrusel.
+                  Container(
+                    color: Colors.blueAccent, // Fondo azul.
+                    child: Center(
+                      child: Text(
+                        "Material Components", // Texto del primer elemento.
+                        style: TextStyle(
+                          color: Colors.white, // Texto blanco.
+                          fontSize: 45, // Tamaño de fuente grande.
+                        ),
+                        textAlign: TextAlign.center, // Texto centrado.
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.blueAccent, // Fondo azul.
+                    child: Center(
+                      child: Text(
+                        "Layout", // Texto del segundo elemento.
+                        style: TextStyle(
+                          color: Colors.white, // Texto blanco.
+                          fontSize: 45, // Tamaño de fuente grande.
+                        ),
+                        textAlign: TextAlign.center, // Texto centrado.
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.blueAccent, // Fondo azul.
+                    child: Center(
+                      child: Text(
+                        "Input", // Texto del tercer elemento.
+                        style: TextStyle(
+                          color: Colors.white, // Texto blanco.
+                          fontSize: 45, // Tamaño de fuente grande.
+                        ),
+                        textAlign: TextAlign.center, // Texto centrado.
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Colors.blueAccent, // Fondo azul.
+                    child: Center(
+                      child: Text(
+                        "Painting and Effects", // Texto del cuarto elemento.
+                        style: TextStyle(
+                          color: Colors.white, // Texto blanco.
+                          fontSize: 45, // Tamaño de fuente grande.
+                        ),
+                        textAlign: TextAlign.center, // Texto centrado.
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
           ],
         ),
       ),

@@ -1,22 +1,23 @@
-# Capítulo 4: Widget TextField
+# Capítulo 5: Carousel View
 
 ## Objetivo
 
-En este capítulo, aprenderás a implementar un **TextField** en el cuerpo (*body*) de la aplicación. Este campo funcionará como un buscador de widgets, diseñado con un estilo moderno y funcional.
+En este capítulo, aprenderás a implementar y personalizar un **Carousel View**, una vista deslizante que permite mostrar elementos de forma interactiva en la aplicación. Esta funcionalidad es útil para destacar contenido importante o navegar entre categorías de manera visual.
 
 ---
 
 ## Desarrollo
 
-1. Se agregó un **TextField** en el cuerpo de la vista principal para crear un campo de búsqueda.
-2. Se personalizó el diseño del **TextField**, incluyendo un texto de sugerencia (*hintText*), un fondo blanco, un ícono de búsqueda y bordes redondeados.
-3. Se utilizó un **Padding** para agregar espacio uniforme alrededor del campo.
-4. Se colocó el **TextField** dentro de una **Column** para estructurar mejor la vista y permitir futuras expansiones.
+1. Se implementó un **Carousel View** dentro del cuerpo (*body*) de la vista principal.
+2. Se utilizó un constructor con pesos flexibles (`flexWeights`) para ajustar la proporción entre los elementos visibles y las áreas de los bordes.
+3. Cada elemento del carrusel es un contenedor con un fondo de color azul y texto centralizado.
+4. Se configuró la propiedad `itemSnapping` para que los elementos se alineen automáticamente al desplazarse.
+5. Se incluyó una función `onTap` para manejar eventos cuando un elemento del carrusel es seleccionado.
 
 ---
 
 ## Conclusión
 
-Este capítulo introduce el widget **TextField** como un elemento clave en la interfaz, proporcionando un campo de búsqueda funcional y visualmente atractivo. La personalización aplicada mejora la experiencia del usuario y sienta las bases para incorporar más funcionalidades en el futuro.
+El **Carousel View** proporciona una manera efectiva de organizar contenido en la aplicación, destacando elementos clave de forma visual e interactiva. Al combinarlo con configuraciones personalizadas como `flexWeights` y `onTap`, se mejora la experiencia del usuario y se agrega funcionalidad dinámica a la aplicación.
 
-En los próximos capítulos, exploraremos más widgets y conceptos avanzados para continuar enriqueciendo la aplicación. ¡Sigue aprendiendo y desarrollando! 🚀
+En los próximos capítulos, exploraremos más widgets avanzados para seguir enriqueciendo la aplicación. ¡Continúa construyendo y aprendiendo! 🚀
