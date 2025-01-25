@@ -1,59 +1,44 @@
-# Capítulo 1: Partes de una Aplicación
+# Capítulo 2: AppBar Widget
 
 ## Objetivo
 
-En este capítulo, aprenderás sobre las diferentes partes que componen una aplicación móvil, tanto en términos de diseño como de funcionalidad. Este conocimiento es esencial para comprender la estructura básica de cualquier aplicación desarrollada en Flutter.
+En este capítulo, aprenderás cómo implementar un **AppBar** en una nueva vista (*view*). Esta vista será el punto de inicio de la aplicación que desarrollaremos a lo largo de esta sección. También organizaremos el proyecto creando una carpeta específica para las vistas, manteniendo una estructura limpia y ordenada.
 
 ---
 
 ## Desarrollo
 
-Las partes de una aplicación móvil pueden variar dependiendo de la plataforma (iOS, Android) o del framework utilizado. A continuación, se describen las partes más comunes que conforman una aplicación móvil, acompañadas de ejemplos visuales.
-
-![Introduction](readme_assets/1.jpg)
-
-### 1. **AppBar (Barra de Aplicación o de Navegación)**
-
-La **AppBar** es la barra superior que contiene el título de la pantalla, íconos de acciones rápidas (como búsqueda o ajustes) y botones de navegación.
-
-![AppBar](readme_assets/2.jpg)
+### Paso 1: Limpiar el código innecesario
+El proyecto generado por defecto incluye código de ejemplo que no será necesario. Comienza eliminando cualquier elemento que no sea relevante para la estructura de la aplicación, dejando un entorno limpio para trabajar.
 
 ---
 
-### 2. **Body (Cuerpo de la Aplicación)**
+### Paso 2: Crear una carpeta para organizar las vistas
+Para mantener una estructura clara en el proyecto, crea una nueva carpeta llamada `views` dentro del directorio `lib`. Esta carpeta contendrá las vistas de la aplicación.
 
-El **Body** es el área principal donde se despliega el contenido, como texto, imágenes, listas o formularios. Es la sección central de la pantalla.
-
-![Body](readme_assets/3.jpg)
-
----
-
-### 3. **Drawer (Menú Lateral)**
-
-El **Drawer** es un menú deslizable, generalmente accesible desde el lado izquierdo de la pantalla. Contiene enlaces o accesos a diferentes secciones de la aplicación.
-
-![Drawer](readme_assets/4.jpg)
+- Ruta sugerida: `lib/views`
+- Dentro de esta carpeta, crea un archivo para la vista inicial de la aplicación. Nombrarlo de manera descriptiva, como `home_view.dart`, ayudará a identificar fácilmente su propósito.
 
 ---
 
-### 4. **Bottom Navigation Bar (Barra de Navegación Inferior)**
-
-La **Bottom Navigation Bar** es una barra ubicada en la parte inferior de la pantalla. Permite la navegación entre diferentes secciones de la aplicación.
-
-![Bottom Navigation Bar](readme_assets/5.jpg)
+### Paso 3: Crear la primera vista de la aplicación
+Define una nueva vista en el archivo creado en el paso anterior. Esta vista será el punto de inicio de la aplicación y contendrá un **AppBar** básico.
 
 ---
 
-### 5. **Floating Action Button (FAB)**
+### Paso 4: Implementar el AppBar
+En la nueva vista:
+- Agrega un **AppBar**.
+- Personaliza el **AppBar** con opciones básicas, como:
+    - Centrar el título.
+    - Cambiar el color de fondo.
 
-El **Floating Action Button** es un botón flotante, generalmente de forma circular, que sirve para realizar una acción principal dentro de la aplicación.
-
-![FAB](readme_assets/6.jpg)
+Actualiza la propiedad `home` del widget `MaterialApp` en el archivo `main.dart` para que apunte a esta nueva vista.
 
 ---
 
 ## Conclusión
 
-En este capítulo, hemos explorado las partes fundamentales de una aplicación móvil, destacando la importancia de cada componente en el diseño y la funcionalidad. Comprender estas estructuras es esencial para el desarrollo de aplicaciones intuitivas y atractivas en Flutter.
+En este capítulo, organizamos el proyecto creando una carpeta específica para las vistas y configuramos la primera vista de la aplicación, implementando un **AppBar** básico. Este es un paso importante para mantener un código limpio y estructurado, facilitando el desarrollo y la escalabilidad de la aplicación.
 
-En los próximos capítulos, profundizaremos en cómo implementar estas partes utilizando Flutter, aprovechando sus widgets y herramientas para crear aplicaciones modernas y eficientes.
+En los próximos capítulos, exploraremos cómo personalizar el **AppBar** y agregar elementos interactivos, como botones de acción y menús. ¡Sigue adelante y disfruta del proceso de aprendizaje! 🚀
