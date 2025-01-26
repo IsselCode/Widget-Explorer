@@ -1,24 +1,26 @@
-# Capítulo 10: Uso de Entidades y Simulación de Datos
+# Capítulo 11: ListView y ListTile
 
 ## Objetivo
 
-En este capítulo, aprenderás a crear una **entidad** (clase `CategoryEntity`) para estructurar y organizar datos de manera profesional, simulando cómo se manejan los datos en aplicaciones reales. Además, se optimizó el código utilizando una lista de instancias de esta entidad y el método `List.generate` para renderizar las tarjetas dinámicamente.
+En este capítulo, aprenderás a utilizar los widgets **ListView** y **ListTile** para crear listas simples y funcionales. Además, exploraremos cómo definir un tamaño fijo para una lista y cómo interactuar con los elementos a través de eventos como `onTap`.
 
 ---
 
 ## Desarrollo
 
-1. Se creó la clase `CategoryEntity` para representar una categoría con las propiedades necesarias (`image`, `title`, `subtitle`).
-2. Se definió una lista estática de objetos `CategoryEntity` para simular datos obtenidos en tiempo de ejecución, como en una API o base de datos.
-3. Se utilizó `List.generate` para recorrer la lista de categorías y generar dinámicamente las tarjetas con el widget `_LayoutCard`.
-4. Este enfoque mejora la legibilidad del código, facilita la escalabilidad y se aproxima a cómo se manejan los datos en aplicaciones reales.
+1. **ListView**: Se utilizó para mostrar una lista de elementos desplazables en un espacio limitado.
+2. **ListTile**: Se implementó para representar cada elemento de la lista, aprovechando su diseño predeterminado que incluye `title`, `subtitle`, `leading`, `trailing` y eventos como `onTap`.
+3. Se añadió un nuevo elemento a la lista de categorías: "Diálogos", ampliando el contenido mostrado en capítulos anteriores.
+4. El código incluye el uso de `SizedBox` para controlar el espaciado entre los elementos y definir el tamaño de la lista.
 
 ---
 
 ## Conclusión
 
-La creación de entidades y el uso de listas de instancias permiten estructurar mejor los datos y optimizar el manejo dinámico de contenido en aplicaciones Flutter. Este enfoque simula un entorno más cercano al de aplicaciones reales y es esencial para manejar datos provenientes de APIs, bases de datos u otros servicios.
+El uso de widgets como **ListView** y **ListTile** es fundamental para mostrar listas de contenido de manera eficiente y personalizable en aplicaciones Flutter. Este capítulo demuestra cómo estructurar una lista con propiedades simples y añadir interactividad con `onTap`.
 
-En el siguiente capítulo, exploraremos más Widgets. ¡Sigue aprendiendo y avanzando! 🚀
+En el siguiente capítulo, exploraremos aún más widgets. ¡Sigue aprendiendo y construyendo! 🚀
 
 ---
+
+![Cap11](readme_assets/cap11.png)

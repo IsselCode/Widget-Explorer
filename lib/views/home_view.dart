@@ -109,12 +109,79 @@ class HomeView extends StatelessWidget {
             const SizedBox(height: 20,),
 
             SizedBox(
-              height: 200,
+              height: 250, // Define un tamaño fijo para la altura del ListView.
+              /*
+                ListView: Este widget permite mostrar una lista desplazable de elementos.
+                En este caso, ListView tiene hijos directos definidos como una lista en el atributo `children`.
+              */
               child: ListView(
                 children: [
-                  Container(
-                    color: Colors.red,
-                  )
+                  /*
+                    ListTile: Un widget optimizado para mostrar elementos de lista.
+                    Incluye propiedades como:
+                      - `title`: Título del elemento.
+                      - `subtitle`: Texto descriptivo secundario.
+                      - `onTap`: Evento que se ejecuta al hacer clic en el elemento.
+                      - `trailing`: Widget opcional que se muestra al final del elemento.
+                  */
+                  ListTile(
+                    title: Text("Material"), // Título del ListTile.
+                    subtitle: Text("Material Components"), // Subtítulo para mayor contexto.
+                    /*
+                      onTap: Acción ejecutada al interactuar con el ListTile.
+                      En este caso, imprime un mensaje en la consola.
+                    */
+                    onTap: () {
+                      print("Mostrar Widget Expanded");
+                    },
+                  ),
+                  const SizedBox(height: 5,), // Espaciado entre elementos de la lista.
+
+                  ListTile(
+                    title: Text("Expanded"),
+                    trailing: Icon(Icons.favorite, color: Colors.red,), // Ícono al final del ListTile.
+                    subtitle: Text("Material Components"),
+                    onTap: () {
+                      print("Mostrar Widget Expanded");
+                    },
+                  ),
+                  const SizedBox(height: 5,),
+
+                  ListTile(
+                    title: Text("Card"),
+                    subtitle: Text("Material Components"),
+                    onTap: () {
+                      print("Mostrar Widget Card");
+                    },
+                  ),
+                  const SizedBox(height: 5,),
+
+                  ListTile(
+                    title: Text("Divider"),
+                    subtitle: Text("Material Components"),
+                    onTap: () {
+                      print("Mostrar Widget Divider");
+                    },
+                  ),
+                  const SizedBox(height: 5,),
+
+                  ListTile(
+                    title: Text("ListTile"),
+                    subtitle: Text("Material Components"),
+                    onTap: () {
+                      print("Mostrar Widget ListTile");
+                    },
+                  ),
+                  const SizedBox(height: 5,),
+
+                  ListTile(
+                    title: Text("AlertDialog"),
+                    subtitle: Text("Material Components"),
+                    trailing: Icon(Icons.favorite, color: Colors.red,), // Ícono destacado con un color rojo.
+                    onTap: () {
+                      print("Mostrar AlertDialog");
+                    },
+                  ),
                 ],
               ),
             )

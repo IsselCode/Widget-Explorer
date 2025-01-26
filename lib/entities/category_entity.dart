@@ -36,5 +36,10 @@ List<CategoryEntity> categories = [
     title: "Material Components",
     subtitle: "7 Widgets",
   ),
+  CategoryEntity(
+    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_5.png",
+    title: "Diálogos",
+    subtitle: "4 Diálogos",
+  ),
 
 ];
