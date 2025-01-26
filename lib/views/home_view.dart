@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       // Cambiar el color para que el iconButton sea visible
       backgroundColor: Color(0xfff4f5f7),
@@ -71,30 +73,56 @@ class HomeView extends StatelessWidget {
 
             // Contenedor del Carousel View.
             SizedBox(
-              height: 400, // Altura del carrusel.
-              // Ejemplo del uso de un constructor nombrado "weighted".
+              height: 400,
               child: CarouselView.weighted(
-                // Controlador opcional para gestionar la posición del carrusel.
-                // controller: CarouselController(),
-                itemSnapping: true, // Permite al carrusel alinear los elementos automáticamente al desplazarse.
-                /*
-                Pesos flexibles para ajustar la proporción de las áreas visibles.
-                El espacio disponible se divide en 9 partes totales (1 + 7 + 1).
-                El primer y tercer elementos recibirán 1/9 parte del espacio cada uno.
-                El elemento del medio recibirá 7/9 partes del espacio, ocupando la mayor proporción.
-                */
+                // Ajustar el redondeado de esquinas del carrusel
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                itemSnapping: true,
                 flexWeights: const [1, 7, 1],
                 onTap: (value) {
-                  print(value); // Evento que se dispara al seleccionar un elemento del carrusel.
+                  print(value);
                 },
-                // Contenedores del carrusel con imágenes reemplazando el texto.
                 children: [
-                  Container(
-                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
-                    child: Image.network(
-                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png", // URL de la imagen.
-                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
-                    ),
+                  // Superponer widgets unos sobre otros, permitiendo apilar elementos en diferentes posiciones.
+                  Stack(
+                    alignment: AlignmentDirectional.bottomStart, // Alinea los widgets secundarios en la parte inferior izquierda de la pila.
+                    children: [
+                      Container(
+                        color: Colors.blue, // Establece un color azul de fondo para el contenedor principal.
+                        child: Image.network(
+                          "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png", // URL de la imagen.
+                          fit: BoxFit.cover, // Asegura que la imagen ocupe todo el espacio disponible sin distorsionarse.
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0), // Agrega un margen interno de 16 píxeles alrededor del texto.
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start, // Alinea el texto hacia el inicio del eje horizontal.
+                          mainAxisSize: MainAxisSize.min, // Ajusta el tamaño del eje vertical al contenido mínimo necesario.
+                          children: [
+                            Text(
+                              "Material Components", // Título principal superpuesto en la imagen.
+                              softWrap: false, // Evita que el texto se ajuste al ancho disponible, forzando una sola línea.
+                              style: TextStyle(
+                                color: Colors.white, // Texto en color blanco para destacar sobre el fondo.
+                                fontSize: 30, // Tamaño de fuente del título.
+                                fontWeight: FontWeight.w500, // Grosor medio del texto.
+                              ),
+                            ),
+                            Text(
+                              "Sección 1 | Capítulo 1", // Subtítulo debajo del título principal.
+                              softWrap: false, // Misma configuración para mantener el texto en una sola línea.
+                              style: TextStyle(
+                                color: Colors.white, // Color blanco para el subtítulo.
+                                fontSize: 20, // Tamaño de fuente del subtítulo.
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   Container(
                     color: Colors.blueAccent, // Fondo azul en caso de error de carga.
