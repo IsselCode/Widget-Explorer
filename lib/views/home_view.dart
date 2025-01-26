@@ -89,11 +89,18 @@ class HomeView extends StatelessWidget {
                   Stack(
                     alignment: AlignmentDirectional.bottomStart, // Alinea los widgets secundarios en la parte inferior izquierda de la pila.
                     children: [
-                      Container(
-                        color: Colors.blue, // Establece un color azul de fondo para el contenedor principal.
+                      /*
+                      El OverflowBox en Flutter se utiliza para permitir que un
+                      widget hijo se salga de los límites de su contenedor padre,
+                      ignorando las restricciones impuestas por este.
+                      Es útil cuando necesitas mostrar contenido más grande que el
+                      espacio disponible sin recortar ni deformar el diseño.
+                       */
+                      OverflowBox(
+                        maxWidth: 500,
                         child: Image.network(
                           "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png", // URL de la imagen.
-                          fit: BoxFit.cover, // Asegura que la imagen ocupe todo el espacio disponible sin distorsionarse.
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Padding(

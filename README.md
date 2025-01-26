@@ -1,27 +1,25 @@
-# Capítulo 7: Widget Stack
+# Capítulo 8: Widget OverflowBox
 
 ## Objetivo
 
-En este capítulo, aprenderás a implementar el widget **Stack** para crear interfaces dinámicas y superpuestas. Este widget es útil para mostrar contenido en capas, como imágenes con texto superpuesto o elementos interactivos en diferentes niveles visuales.
+En este capítulo, aprenderás a usar el widget **OverflowBox** para ajustar elementos que exceden las dimensiones asignadas por sus padres. Esto es útil para manejar contenido dinámico que necesita más espacio del disponible en su contenedor inmediato.
 
 ---
 
 ## Desarrollo
 
-1. Se utilizó el widget **Stack** para organizar elementos de forma superpuesta.
-2. La propiedad `alignment` se configuró en `AlignmentDirectional.bottomStart` para posicionar los elementos secundarios en la parte inferior izquierda de la pila.
-3. Se agregó un **Container** con una imagen como fondo, utilizando `Image.network` y configurando su ajuste mediante `BoxFit.cover`.
-4. Se incluyó un texto descriptivo dentro de un **Column**, con formato personalizado para resaltar el diseño visual.
-5. Se añadió un **Padding** al texto para separarlo del borde de la imagen, mejorando su legibilidad y estética.
+1. Se reemplazó el **Container** utilizado en el capítulo anterior por un widget **OverflowBox**.
+2. La propiedad `maxWidth` del **OverflowBox** se configuró en `500` para limitar la expansión horizontal del contenido.
+3. Se incluyó una imagen dinámica cargada mediante `Image.network` como elemento hijo del **OverflowBox**.
+4. La propiedad `fit` de la imagen se mantuvo como `BoxFit.cover` para asegurar que ocupe todo el espacio asignado, adaptándose a las dimensiones del **OverflowBox**.
 
 ---
 
 ## Conclusión
 
-El widget **Stack** permite crear diseños complejos con múltiples capas superpuestas. En este capítulo, aprendimos a superponer texto sobre imágenes y a personalizar el diseño visual con alineaciones y propiedades de estilo. Este enfoque es ideal para interfaces modernas e interactivas.
+El widget **OverflowBox** es ideal para manejar casos donde los elementos necesitan exceder las dimensiones de su contenedor padre. En este capítulo, aprendimos a usarlo para mostrar imágenes de mayor tamaño sin alterar la estructura del diseño. Esta técnica es especialmente útil para diseños responsivos y personalizados.
 
-En los siguientes capítulos, seguiremos explorando widgets avanzados y cómo usarlos para enriquecer tus aplicaciones. ¡Continúa aprendiendo y creando! 🚀
+En el siguiente capítulo, exploraremos cómo combinar varios widgets avanzados para lograr interfaces más ricas y dinámicas. ¡Continúa aprendiendo y experimentando! 🚀
 
-## Muestra
 
-![Cap7](readme_assets/cap7.png)
+![Cap8](readme_assets/cap8.png)
