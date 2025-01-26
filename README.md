@@ -1,25 +1,24 @@
-# Capítulo 8: Widget OverflowBox
+# Capítulo 9: Creación de un LayoutCard
 
 ## Objetivo
 
-En este capítulo, aprenderás a usar el widget **OverflowBox** para ajustar elementos que exceden las dimensiones asignadas por sus padres. Esto es útil para manejar contenido dinámico que necesita más espacio del disponible en su contenedor inmediato.
+En este capítulo, aprenderás a crear un widget personalizado llamado **_LayoutCard** para simplificar y reducir el código repetitivo al mostrar tarjetas con imágenes, títulos y subtítulos. Este enfoque permite una mejor organización y reutilización del código, especialmente en diseños que requieren consistencia visual.
 
 ---
 
 ## Desarrollo
 
-1. Se reemplazó el **Container** utilizado en el capítulo anterior por un widget **OverflowBox**.
-2. La propiedad `maxWidth` del **OverflowBox** se configuró en `500` para limitar la expansión horizontal del contenido.
-3. Se incluyó una imagen dinámica cargada mediante `Image.network` como elemento hijo del **OverflowBox**.
-4. La propiedad `fit` de la imagen se mantuvo como `BoxFit.cover` para asegurar que ocupe todo el espacio asignado, adaptándose a las dimensiones del **OverflowBox**.
+1. Se creó la clase **_LayoutCard**, un widget `StatelessWidget` personalizado, para encapsular la lógica y el diseño de una tarjeta.
+2. Se definieron tres propiedades (`image`, `title`, `subtitle`) para recibir contenido dinámico y personalizable.
+3. En lugar de repetir estructuras de código para cada tarjeta, se reutilizó el widget personalizado **_LayoutCard**, manteniendo un diseño limpio y escalable.
+4. Este método modular mejora la legibilidad, facilita la escalabilidad y reduce errores en el código repetitivo.
 
 ---
 
 ## Conclusión
 
-El widget **OverflowBox** es ideal para manejar casos donde los elementos necesitan exceder las dimensiones de su contenedor padre. En este capítulo, aprendimos a usarlo para mostrar imágenes de mayor tamaño sin alterar la estructura del diseño. Esta técnica es especialmente útil para diseños responsivos y personalizados.
+La creación de widgets personalizados como **_LayoutCard** facilita la reutilización del código y mejora la organización de los proyectos en Flutter. Este enfoque modular es esencial para mantener un diseño limpio y escalable, especialmente en aplicaciones complejas con componentes repetitivos.
 
-En el siguiente capítulo, exploraremos cómo combinar varios widgets avanzados para lograr interfaces más ricas y dinámicas. ¡Continúa aprendiendo y experimentando! 🚀
+En el próximo capítulo, exploraremos cómo agregar interactividad y animaciones a estos widgets personalizados. ¡Sigue desarrollando y aprendiendo! 🚀
 
-
-![Cap8](readme_assets/cap8.png)
+---

@@ -84,75 +84,30 @@ class HomeView extends StatelessWidget {
                 onTap: (value) {
                   print(value);
                 },
+                // Ejemplo de uso del widget _LayoutCard para crear varias tarjetas con contenido dinámico.
+                // Esto reduce la repetición de código y asegura un diseño consistente.
                 children: [
-                  // Superponer widgets unos sobre otros, permitiendo apilar elementos en diferentes posiciones.
-                  Stack(
-                    alignment: AlignmentDirectional.bottomStart, // Alinea los widgets secundarios en la parte inferior izquierda de la pila.
-                    children: [
-                      /*
-                      El OverflowBox en Flutter se utiliza para permitir que un
-                      widget hijo se salga de los límites de su contenedor padre,
-                      ignorando las restricciones impuestas por este.
-                      Es útil cuando necesitas mostrar contenido más grande que el
-                      espacio disponible sin recortar ni deformar el diseño.
-                       */
-                      OverflowBox(
-                        maxWidth: 500,
-                        child: Image.network(
-                          "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png", // URL de la imagen.
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0), // Agrega un margen interno de 16 píxeles alrededor del texto.
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start, // Alinea el texto hacia el inicio del eje horizontal.
-                          mainAxisSize: MainAxisSize.min, // Ajusta el tamaño del eje vertical al contenido mínimo necesario.
-                          children: [
-                            Text(
-                              "Material Components", // Título principal superpuesto en la imagen.
-                              softWrap: false, // Evita que el texto se ajuste al ancho disponible, forzando una sola línea.
-                              style: TextStyle(
-                                color: Colors.white, // Texto en color blanco para destacar sobre el fondo.
-                                fontSize: 30, // Tamaño de fuente del título.
-                                fontWeight: FontWeight.w500, // Grosor medio del texto.
-                              ),
-                            ),
-                            Text(
-                              "Sección 1 | Capítulo 1", // Subtítulo debajo del título principal.
-                              softWrap: false, // Misma configuración para mantener el texto en una sola línea.
-                              style: TextStyle(
-                                color: Colors.white, // Color blanco para el subtítulo.
-                                fontSize: 20, // Tamaño de fuente del subtítulo.
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  _LayoutCard(
+                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png",
+                    title: "Material Components",
+                    subtitle: "Sección 1 | 10 Widgets",
                   ),
-                  Container(
-                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
-                    child: Image.network(
-                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png", // URL de la imagen.
-                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
-                    ),
+                  _LayoutCard(
+                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png",
+                    title: "Material Components",
+                    subtitle: "Sección 2 | 12 Widgets",
                   ),
-                  Container(
-                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
-                    child: Image.network(
-                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png", // URL de la imagen.
-                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
-                    ),
+                  _LayoutCard(
+                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png",
+                    title: "Material Components",
+                    subtitle: "Sección 3 | 15 Widgets",
                   ),
-                  Container(
-                    color: Colors.blueAccent, // Fondo azul en caso de error de carga.
-                    child: Image.network(
-                      "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_4.png", // URL de la imagen.
-                      fit: BoxFit.cover, // La imagen se ajusta para cubrir todo el espacio del contenedor.
-                    ),
+                  _LayoutCard(
+                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_4.png",
+                    title: "Material Components",
+                    subtitle: "Sección 4 | 7 Widgets",
                   ),
-                ],
+                ]
 
               ),
             ),
@@ -160,6 +115,66 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+// Widget personalizado _LayoutCard para encapsular la lógica y el diseño de las tarjetas.
+// Este widget permite simplificar la creación de tarjetas con contenido dinámico,
+// reduciendo la repetición de código y facilitando la personalización.
+class _LayoutCard extends StatelessWidget {
+  final String image; // Imagen dinámica que se mostrará como fondo de la tarjeta.
+  final String title; // Título dinámico de la tarjeta.
+  final String subtitle; // Subtítulo dinámico de la tarjeta.
+
+  // Constructor que recibe las propiedades necesarias para personalizar cada tarjeta.
+  const _LayoutCard({
+    required this.image,
+    required this.title,
+    required this.subtitle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: AlignmentDirectional.bottomStart,
+      children: [
+        OverflowBox(
+          maxWidth: 400,
+          // Asignamos el minimo de ancho para que la imagen se ajuste correctamente
+          minWidth: 400,
+          child: Image.network(
+            image,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                title,
+                softWrap: false,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                subtitle,
+                softWrap: false,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
