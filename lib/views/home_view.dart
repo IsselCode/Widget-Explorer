@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:widget_explorer/entities/category_entity.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -84,33 +85,39 @@ class HomeView extends StatelessWidget {
                 onTap: (value) {
                   print(value);
                 },
-                // Ejemplo de uso del widget _LayoutCard para crear varias tarjetas con contenido dinámico.
-                // Esto reduce la repetición de código y asegura un diseño consistente.
-                children: [
-                  _LayoutCard(
-                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_1.png",
-                    title: "Material Components",
-                    subtitle: "Sección 1 | 10 Widgets",
-                  ),
-                  _LayoutCard(
-                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png",
-                    title: "Material Components",
-                    subtitle: "Sección 2 | 12 Widgets",
-                  ),
-                  _LayoutCard(
-                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png",
-                    title: "Material Components",
-                    subtitle: "Sección 3 | 15 Widgets",
-                  ),
-                  _LayoutCard(
-                    image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_4.png",
-                    title: "Material Components",
-                    subtitle: "Sección 4 | 7 Widgets",
-                  ),
-                ]
+                // Generación dinámica de tarjetas utilizando List.generate.
+                // Esto recorre la lista de categorías y crea una tarjeta por cada objeto.
+                children: List.generate(
+                  categories.length, // Número total de categorías en la lista.
+                  (index) {
+                  CategoryEntity category = categories[index]; // Obtiene la categoría actual.
+                    /*
+                    Se crea una instancia de _LayoutCard para cada categoría.
+                    Esto asegura que cada tarjeta sea personalizada con los datos de la categoría correspondiente.
+                    */
+                    return _LayoutCard(
+                      image: category.image,
+                      title: category.title,
+                      subtitle: category.subtitle,
+                    );
+                  },
+                ),
 
               ),
             ),
+
+            const SizedBox(height: 20,),
+
+            SizedBox(
+              height: 200,
+              child: ListView(
+                children: [
+                  Container(
+                    color: Colors.red,
+                  )
+                ],
+              ),
+            )
 
           ],
         ),
