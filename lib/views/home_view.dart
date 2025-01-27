@@ -1,10 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:widget_explorer/entities/category_entity.dart';
 import 'package:widget_explorer/entities/widget_entity.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+
+  // Lista dinámica que se actualiza en tiempo real con los elementos filtrados.
+  late List<WidgetEntity> widgetEntities;
+
+  // Método del ciclo de vida: Inicializa los datos al cargar el widget.
+  @override
+  void initState() {
+    // Inicializa widgetEntities con todos los elementos de la lista original.
+    widgetEntities = widgets;
+
+    super.initState();
+  }
+
+  /*
+    Método buscarWidgets:
+    - Filtra los elementos de la lista original (widgets) que comienzan con el valor ingresado.
+    - Utiliza setState() para reconstruir el widget con los resultados filtrados.
+  */
+  void buscarWidgets(String value) {
+
+    widgetEntities = widgets.where((element) {
+      // Retorna solo los elementos cuyo título comience con el valor ingresado.
+      return element.title.startsWith(value);
+    },).toList();
+
+    // Notifica a Flutter que el estado ha cambiado y la interfaz debe reconstruirse.
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +89,9 @@ class HomeView extends StatelessWidget {
           children: [
             // Se agrega un TextField para el campo de búsqueda.
             TextField(
+              // TextField: Campo de texto para que el usuario ingrese el filtro.
+              onSubmitted: buscarWidgets,
+              // onChanged: buscarWidgets,
               decoration: InputDecoration(
                 hintText: "Buscar Widget", // Texto de sugerencia que indica la función del campo.
                 filled: true,  // Activa el fondo relleno del TextField.
@@ -125,7 +161,7 @@ class HomeView extends StatelessWidget {
                 child: ListView.separated(
                   padding: EdgeInsets.all(20),
                   // Número total de elementos en la lista.
-                  itemCount: widgets.length,
+                  itemCount: widgetEntities.length,
                   /*
                     separatorBuilder: Esta devolución de llamada define el separador entre elementos de la lista.
                     Recibe el contexto y el índice actual, y debe devolver un widget que actuará como separador.
@@ -137,7 +173,7 @@ class HomeView extends StatelessWidget {
                   // La devolución de llamada itemBuilder se llamará solo con índices
                   // mayores o iguales a cero y menores que itemCount
                   itemBuilder: (context, index) {
-                    WidgetEntity widgetEntity = widgets[index]; // Obtiene el elemento actual.
+                    WidgetEntity widgetEntity = widgetEntities[index]; // Obtiene el elemento actual.
                     return _WidgetTile(
                       title: widgetEntity.title,
                       subtitle: widgetEntity.subtitle,

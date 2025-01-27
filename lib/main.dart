@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_explorer/gestion_de_estado/example_widget.dart';
+import 'package:widget_explorer/views/home_view.dart';
 
 import 'gestion_de_estado/idioma.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: ExampleWidget(),
+        home: HomeView(),
       )
     );
   }
