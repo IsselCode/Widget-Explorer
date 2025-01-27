@@ -85,109 +85,117 @@ class _HomeViewState extends State<HomeView> {
       // Se define el cuerpo de la vista principal con un Padding para agregar espacio alrededor.
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Agrega un margen uniforme de 16 píxeles alrededor del contenido.
-        child: Column(
-          children: [
-            // Se agrega un TextField para el campo de búsqueda.
-            TextField(
-              // TextField: Campo de texto para que el usuario ingrese el filtro.
-              onSubmitted: buscarWidgets,
-              // onChanged: buscarWidgets,
-              decoration: InputDecoration(
-                hintText: "Buscar Widget", // Texto de sugerencia que indica la función del campo.
-                filled: true,  // Activa el fondo relleno del TextField.
-                fillColor: Colors.white, // Color de fondo blanco para resaltar el campo.
-                prefixIcon: Icon(
-                  Icons.search, // Ícono de búsqueda colocado a la izquierda del campo.
-                  color: Colors.grey, // Color gris para el ícono.
+        /*
+        SingleChildScrollView:
+        Permite que la pantalla sea desplazable cuando el teclado reduce el espacio disponible.
+        */
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // Se agrega un TextField para el campo de búsqueda.
+              TextField(
+                // TextField: Campo de texto para que el usuario ingrese el filtro.
+                onSubmitted: buscarWidgets,
+                // onChanged: buscarWidgets,
+                decoration: InputDecoration(
+                  hintText: "Buscar Widget", // Texto de sugerencia que indica la función del campo.
+                  filled: true,  // Activa el fondo relleno del TextField.
+                  fillColor: Colors.white, // Color de fondo blanco para resaltar el campo.
+                  prefixIcon: Icon(
+                    Icons.search, // Ícono de búsqueda colocado a la izquierda del campo.
+                    color: Colors.grey, // Color gris para el ícono.
+                  ),
+                  border: OutlineInputBorder(
+                   borderSide: BorderSide.none, // Sin bordes visibles.
+                   borderRadius: BorderRadius.circular(20) // Bordes redondeados para un diseño moderno.
+                  )
                 ),
-                border: OutlineInputBorder(
-                 borderSide: BorderSide.none, // Sin bordes visibles.
-                 borderRadius: BorderRadius.circular(20) // Bordes redondeados para un diseño moderno.
-                )
               ),
-            ),
 
-            // Espaciado adicional antes del carrusel.
-            const SizedBox(height: 20,),
+              // Espaciado adicional antes del carrusel.
+              const SizedBox(height: 20,),
 
-            // Contenedor del Carousel View.
-            SizedBox(
-              height: 400,
-              child: CarouselView.weighted(
-                // Ajustar el redondeado de esquinas del carrusel
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)
-                ),
-                itemSnapping: true,
-                flexWeights: const [1, 7, 1],
-                onTap: (value) {
-                  print(value);
-                },
-                // Generación dinámica de tarjetas utilizando List.generate.
-                // Esto recorre la lista de categorías y crea una tarjeta por cada objeto.
-                children: List.generate(
-                  categories.length, // Número total de categorías en la lista.
-                  (index) {
-                  CategoryEntity category = categories[index]; // Obtiene la categoría actual.
-                    /*
-                    Se crea una instancia de _LayoutCard para cada categoría.
-                    Esto asegura que cada tarjeta sea personalizada con los datos de la categoría correspondiente.
-                    */
-                    return _LayoutCard(
-                      image: category.image,
-                      title: category.title,
-                      subtitle: category.subtitle,
-                    );
+              // Contenedor del Carousel View.
+              SizedBox(
+                height: 400,
+                child: CarouselView.weighted(
+                  // Ajustar el redondeado de esquinas del carrusel
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
+                  ),
+                  itemSnapping: true,
+                  flexWeights: const [1, 7, 1],
+                  onTap: (value) {
+                    print(value);
                   },
+                  // Generación dinámica de tarjetas utilizando List.generate.
+                  // Esto recorre la lista de categorías y crea una tarjeta por cada objeto.
+                  children: List.generate(
+                    categories.length, // Número total de categorías en la lista.
+                    (index) {
+                    CategoryEntity category = categories[index]; // Obtiene la categoría actual.
+                      /*
+                      Se crea una instancia de _LayoutCard para cada categoría.
+                      Esto asegura que cada tarjeta sea personalizada con los datos de la categoría correspondiente.
+                      */
+                      return _LayoutCard(
+                        image: category.image,
+                        title: category.title,
+                        subtitle: category.subtitle,
+                      );
+                    },
+                  ),
+
                 ),
-
               ),
-            ),
 
-            const SizedBox(height: 20,),
+              const SizedBox(height: 20,),
 
-            Expanded(
-              /*
-                Card: Widget utilizado para crear un contenedor con bordes redondeados y un color de fondo.
-                En este caso, envuelve el ListView, dándole un fondo blanco que lo distingue visualmente del resto de la interfaz.
-              */
-              child: Card(
-                elevation: 3,
-                color: Colors.white,
+              // Altura fija del contenedor del ListView.
+              SizedBox(
+                height: 400,
                 /*
-                  ListView.separated: Variante de ListView que permite agregar separadores entre los elementos.
-                  Es útil para listas donde se necesita un diseño más organizado y con espacios consistentes.
-                 */
-                child: ListView.separated(
-                  padding: EdgeInsets.all(20),
-                  // Número total de elementos en la lista.
-                  itemCount: widgetEntities.length,
+                  Card: Widget utilizado para crear un contenedor con bordes redondeados y un color de fondo.
+                  En este caso, envuelve el ListView, dándole un fondo blanco que lo distingue visualmente del resto de la interfaz.
+                */
+                child: Card(
+                  elevation: 3,
+                  color: Colors.white,
                   /*
-                    separatorBuilder: Esta devolución de llamada define el separador entre elementos de la lista.
-                    Recibe el contexto y el índice actual, y debe devolver un widget que actuará como separador.
-                    En este caso, se usa un SizedBox con altura fija para crear espacio entre los elementos.
-                  */
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(height: 10,);
-                  },
-                  // La devolución de llamada itemBuilder se llamará solo con índices
-                  // mayores o iguales a cero y menores que itemCount
-                  itemBuilder: (context, index) {
-                    WidgetEntity widgetEntity = widgetEntities[index]; // Obtiene el elemento actual.
-                    return _WidgetTile(
-                      title: widgetEntity.title,
-                      subtitle: widgetEntity.subtitle,
-                      favorite: widgetEntity.favorite,
-                      onTap: () {
-                        print("Mostrar ${widgetEntity.title}");
-                      },
-                    );
-                  },
+                    ListView.separated: Variante de ListView que permite agregar separadores entre los elementos.
+                    Es útil para listas donde se necesita un diseño más organizado y con espacios consistentes.
+                   */
+                  child: ListView.separated(
+                    padding: EdgeInsets.all(20),
+                    // Número total de elementos en la lista.
+                    itemCount: widgetEntities.length,
+                    /*
+                      separatorBuilder: Esta devolución de llamada define el separador entre elementos de la lista.
+                      Recibe el contexto y el índice actual, y debe devolver un widget que actuará como separador.
+                      En este caso, se usa un SizedBox con altura fija para crear espacio entre los elementos.
+                    */
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(height: 10,);
+                    },
+                    // La devolución de llamada itemBuilder se llamará solo con índices
+                    // mayores o iguales a cero y menores que itemCount
+                    itemBuilder: (context, index) {
+                      WidgetEntity widgetEntity = widgetEntities[index]; // Obtiene el elemento actual.
+                      return _WidgetTile(
+                        title: widgetEntity.title,
+                        subtitle: widgetEntity.subtitle,
+                        favorite: widgetEntity.favorite,
+                        onTap: () {
+                          print("Mostrar ${widgetEntity.title}");
+                        },
+                      );
+                    },
+                  ),
                 ),
-              ),
-            )
+              )
 
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,8 +1,8 @@
-# Capítulo 19: Filtrado Dinámico de Widgets
+# Capítulo 20: Uso del SingleChildScrollView
 
 ## Objetivo
 
-En este capítulo, aprenderás a implementar un **StatefulWidget** para manejar estados dinámicos y actualizar la interfaz de usuario en respuesta a interacciones del usuario. Además, se incluye un ejemplo práctico que permite filtrar dinámicamente una lista de elementos basada en el texto ingresado en un campo de texto.
+En este capítulo, aprenderás a utilizar el widget **SingleChildScrollView** para manejar correctamente el problema del teclado virtual que reduce el espacio disponible en la interfaz. Este enfoque permite desplazarse por el contenido incluso cuando el teclado está visible, mejorando la experiencia del usuario.
 
 ---
 
@@ -10,24 +10,19 @@ En este capítulo, aprenderás a implementar un **StatefulWidget** para manejar 
 
 ### Cambios Realizados
 
-1. **Conversión a StatefulWidget**:
-   - Se convirtió el **StatelessWidget** a **StatefulWidget** para manejar el ciclo de vida y el estado mutable del widget.
-   - Esto permite actualizar dinámicamente la interfaz de usuario mediante el método `setState()`.
+1. **Uso de SingleChildScrollView**:
+   - Se envolvió el contenido principal con un **SingleChildScrollView** para permitir el desplazamiento cuando el teclado reduce el espacio visible.
 
-2. **Propiedad `late`**:
-   - Se definió una propiedad `late List<WidgetEntity> widgetEntities` para gestionar los elementos que se mostrarán en el `ListView`.
-   - Usar `late` indica que esta variable se inicializará más tarde, asegurando su disponibilidad antes de ser utilizada.
+2. **Reemplazo de Expanded**:
+   - Se reemplazó el **Expanded** por un **SizedBox** con altura definida para ajustar el diseño según las necesidades de la interfaz.
 
-3. **Inicialización en `initState()`**:
-   - En el método `initState()`, la lista `widgetEntities` se inicializa con todos los elementos disponibles.
-   - Este método es ideal para configuraciones iniciales que solo deben ejecutarse una vez.
-
-4. **Filtrado Dinámico con un TextField**:
-   - Se añadió un campo de texto con un método `onSubmitted`, que se llama al presionar "Enter".
-   - Este método filtra los elementos de la lista que comienzan con el texto ingresado y actualiza el estado del widget.
+3. **Manejo del ListView**:
+   - El **ListView.separated** se mantiene dentro de un **Card**, proporcionando un diseño consistente con bordes redondeados y un fondo blanco.
 
 ---
 
 ## Conclusión
 
-El uso de **StatefulWidget** permite manejar estados dinámicos y crear interfaces interactivas. Este capítulo muestra cómo inicializar datos, actualizarlos en tiempo real y reflejar los cambios en la interfaz gráfica. En el próximo capítulo, resolveremos el problema del teclado que afecta al espacio del `ListView` al escribir en el `TextField`. ¡Hasta pronto! 🚀
+El **SingleChildScrollView** es una solución sencilla y efectiva para manejar contenido desplazable cuando el teclado virtual aparece, asegurando que los elementos de la interfaz sigan siendo accesibles. Este capítulo demuestra cómo combinar este widget con otros para mantener un diseño organizado y funcional.
+
+En el próximo capítulo, exploraremos más formas de optimizar la interfaz para casos avanzados. ¡Sigue aprendiendo y construyendo! 🚀
