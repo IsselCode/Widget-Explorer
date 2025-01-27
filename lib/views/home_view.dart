@@ -9,10 +9,11 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      // Cambiar el color para que el iconButton sea visible
       backgroundColor: Color(0xfff4f5f7),
       appBar: AppBar(
-        // Cambiar el color para que el iconButton sea visible
+        // Establecemos un color transparente a la superficie
+        // para que al hacer scroll no cambie de color
+        surfaceTintColor: Colors.transparent,
         backgroundColor: Color(0xfff4f5f7),
         titleSpacing: 16,
         title: Column(
@@ -108,74 +109,79 @@ class HomeView extends StatelessWidget {
 
             const SizedBox(height: 20,),
 
-            /*
-              Expanded: Este widget permite que un hijo dentro de un diseño flexible (Column o Row)
-              ocupe todo el espacio disponible restante. Es especialmente útil para adaptarse
-              a diferentes tamaños de pantalla sin necesidad de especificar tamaños fijos.
-            */
             Expanded(
               /*
-                ListView: Al envolverlo en un Expanded, este widget desplazable se ajusta
-                automáticamente al espacio disponible dentro de su contenedor padre (Column).
-                Esto hace que el diseño sea más responsivo y elimina la necesidad de un tamaño fijo.
+                Card: Widget utilizado para crear un contenedor con bordes redondeados y un color de fondo.
+                En este caso, envuelve el ListView, dándole un fondo blanco que lo distingue visualmente del resto de la interfaz.
               */
-              child: ListView(
-                children: [
-                  ListTile(
-                    title: Text("Material"),
-                    subtitle: Text("Material Components"),
-                    onTap: () {
-                      print("Mostrar Widget Expanded");
-                    },
-                  ),
-                  const SizedBox(height: 5,),
+              child: Card(
+                elevation: 3,
+                color: Colors.white,
+                child: ListView(
+                  padding: EdgeInsets.all(20),
+                  children: [
+                    ListTile(
+                      title: Text("Material"),
+                      subtitle: Text("Material Components"),
+                      tileColor: Color(0xfff4f5f7),
+                      onTap: () {
+                        print("Mostrar Widget Expanded");
+                      },
+                    ),
+                    const SizedBox(height: 5,),
 
-                  ListTile(
-                    title: Text("Expanded"),
-                    trailing: Icon(Icons.favorite, color: Colors.red,),
-                    subtitle: Text("Material Components"),
-                    onTap: () {
-                      print("Mostrar Widget Expanded");
-                    },
-                  ),
-                  const SizedBox(height: 5,),
+                    ListTile(
+                      title: Text("Expanded"),
+                      trailing: Icon(Icons.favorite, color: Colors.red,),
+                      subtitle: Text("Material Components"),
+                      tileColor: Color(0xfff4f5f7),
+                      onTap: () {
+                        print("Mostrar Widget Expanded");
+                      },
+                    ),
+                    const SizedBox(height: 5,),
 
-                  ListTile(
-                    title: Text("Card"),
-                    subtitle: Text("Material Components"),
-                    onTap: () {
-                      print("Mostrar Widget Card");
-                    },
-                  ),
-                  const SizedBox(height: 5,),
+                    ListTile(
+                      title: Text("Card"),
+                      subtitle: Text("Material Components"),
+                      tileColor: Color(0xfff4f5f7),
+                      onTap: () {
+                        print("Mostrar Widget Card");
+                      },
+                    ),
+                    const SizedBox(height: 5,),
 
-                  ListTile(
-                    title: Text("Divider"),
-                    subtitle: Text("Material Components"),
-                    onTap: () {
-                      print("Mostrar Widget Divider");
-                    },
-                  ),
-                  const SizedBox(height: 5,),
+                    ListTile(
+                      title: Text("Divider"),
+                      subtitle: Text("Material Components"),
+                      tileColor: Color(0xfff4f5f7),
+                      onTap: () {
+                        print("Mostrar Widget Divider");
+                      },
+                    ),
+                    const SizedBox(height: 5,),
 
-                  ListTile(
-                    title: Text("ListTile"),
-                    subtitle: Text("Material Components"),
-                    onTap: () {
-                      print("Mostrar Widget ListTile");
-                    },
-                  ),
-                  const SizedBox(height: 5,),
+                    ListTile(
+                      title: Text("ListTile"),
+                      subtitle: Text("Material Components"),
+                      tileColor: Color(0xfff4f5f7),
+                      onTap: () {
+                        print("Mostrar Widget ListTile");
+                      },
+                    ),
+                    const SizedBox(height: 5,),
 
-                  ListTile(
-                    title: Text("AlertDialog"),
-                    subtitle: Text("Material Components"),
-                    trailing: Icon(Icons.favorite, color: Colors.red,),
-                    onTap: () {
-                      print("Mostrar AlertDialog");
-                    },
-                  ),
-                ],
+                    ListTile(
+                      title: Text("AlertDialog"),
+                      subtitle: Text("Material Components"),
+                      trailing: Icon(Icons.favorite, color: Colors.red,),
+                      tileColor: Color(0xfff4f5f7),
+                      onTap: () {
+                        print("Mostrar AlertDialog");
+                      },
+                    ),
+                  ],
+                ),
               ),
             )
 
