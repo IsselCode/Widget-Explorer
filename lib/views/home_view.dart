@@ -118,10 +118,22 @@ class HomeView extends StatelessWidget {
               child: Card(
                 elevation: 3,
                 color: Colors.white,
-                child: ListView.builder(
+                /*
+                  ListView.separated: Variante de ListView que permite agregar separadores entre los elementos.
+                  Es útil para listas donde se necesita un diseño más organizado y con espacios consistentes.
+                 */
+                child: ListView.separated(
                   padding: EdgeInsets.all(20),
                   // Número total de elementos en la lista.
                   itemCount: widgets.length,
+                  /*
+                    separatorBuilder: Esta devolución de llamada define el separador entre elementos de la lista.
+                    Recibe el contexto y el índice actual, y debe devolver un widget que actuará como separador.
+                    En este caso, se usa un SizedBox con altura fija para crear espacio entre los elementos.
+                  */
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 10,);
+                  },
                   // La devolución de llamada itemBuilder se llamará solo con índices
                   // mayores o iguales a cero y menores que itemCount
                   itemBuilder: (context, index) {
