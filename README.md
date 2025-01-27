@@ -1,25 +1,25 @@
-# Capítulo 13: Uso del Widget Card
+# Capítulo 14: Uso del Widget Divider
 
 ## Objetivo
 
-En este capítulo, aprenderás a usar el widget **Card** para crear un contenedor visualmente destacado con fondo blanco. Además, descubrirás cómo personalizar elementos como **ListTile** y manejar el color durante la interacción de scroll asignando propiedades a la **AppBar**.
+En este capítulo, aprenderás a utilizar el widget **Divider** para separar visualmente los elementos en una lista. Además, se optimizó el código mediante la creación del widget personalizado **_WidgetTile**, que encapsula la lógica y diseño de los elementos de la lista.
 
 ---
 
 ## Desarrollo
 
-1. **Card**: Se utilizó el widget **Card** para envolver un **ListView**, creando un contenedor con un fondo blanco y bordes suaves que mejora la apariencia visual.
-2. **Colores en ListTile**: A cada elemento de **ListTile** se le asignó un color de fondo único para destacar visualmente cada elemento de la lista.
-3. **AppBar y Scroll**: Al notar que el color de la **AppBar** cambiaba al hacer scroll, se utilizó la propiedad `surfaceTintColor` y se configuró en **Colors.transparent** para mantener un diseño uniforme.
+1. **Divider**: Se utilizó para agregar una línea divisoria entre los elementos de la lista, mejorando la organización visual.
+2. **_WidgetTile**: Se creó un widget personalizado basado en **ListTile** para reducir la repetición de código y permitir la personalización de cada elemento con propiedades como `title`, `subtitle`, `favorite` y `onTap`.
+3. **Optimización del código**: Se reemplazaron los elementos repetitivos de **ListTile** por instancias de **_WidgetTile**, asegurando consistencia y claridad en el diseño.
 
 ---
 
 ## Conclusión
 
-El widget **Card** es ideal para crear contenedores destacados con bordes suaves y colores personalizados, mejorando la presentación visual. Además, la configuración de `surfaceTintColor` en la **AppBar** asegura que la interfaz mantenga un diseño consistente incluso al interactuar con el scroll.
+El widget **Divider** es una herramienta simple pero efectiva para organizar elementos en listas. Combinado con widgets personalizados como **_WidgetTile**, permite crear interfaces limpias, reutilizables y fáciles de mantener. Este enfoque es fundamental para desarrollar aplicaciones escalables y bien estructuradas.
 
-En el siguiente capítulo, exploraremos aún más Widgets. ¡Hasta pronto! 🚀
+En el próximo capítulo, exploraremos aún más Widgets. ¡Hasta pronto! 🚀
 
 ---
 
-![Cap13](readme_assets/cap13.png)
+![Cap14](readme_assets/cap14.png)

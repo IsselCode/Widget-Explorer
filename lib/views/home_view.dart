@@ -120,66 +120,68 @@ class HomeView extends StatelessWidget {
                 child: ListView(
                   padding: EdgeInsets.all(20),
                   children: [
-                    ListTile(
-                      title: Text("Material"),
-                      subtitle: Text("Material Components"),
-                      tileColor: Color(0xfff4f5f7),
+
+                    _WidgetTile(
+                      title: "Material",
+                      subtitle: "Material Components",
                       onTap: () {
                         print("Mostrar Widget Expanded");
                       },
                     ),
-                    const SizedBox(height: 5,),
 
-                    ListTile(
-                      title: Text("Expanded"),
-                      trailing: Icon(Icons.favorite, color: Colors.red,),
-                      subtitle: Text("Material Components"),
-                      tileColor: Color(0xfff4f5f7),
+                    Divider(color: Colors.black12,), // Separador visual entre elementos de la lista.
+
+                    _WidgetTile(
+                      title: "Expanded",
+                      subtitle: "Material Components",
+                      favorite: true,
                       onTap: () {
                         print("Mostrar Widget Expanded");
                       },
                     ),
-                    const SizedBox(height: 5,),
 
-                    ListTile(
-                      title: Text("Card"),
-                      subtitle: Text("Material Components"),
-                      tileColor: Color(0xfff4f5f7),
+                    Divider(color: Colors.black12,),
+
+                    _WidgetTile(
+                      title: "Card",
+                      subtitle: "Material Components",
                       onTap: () {
                         print("Mostrar Widget Card");
                       },
                     ),
-                    const SizedBox(height: 5,),
 
-                    ListTile(
-                      title: Text("Divider"),
-                      subtitle: Text("Material Components"),
-                      tileColor: Color(0xfff4f5f7),
+                    Divider(color: Colors.black12,),
+
+                    _WidgetTile(
+                      title: "Divider",
+                      subtitle: "Material Components",
+                      favorite: true,
                       onTap: () {
                         print("Mostrar Widget Divider");
                       },
                     ),
-                    const SizedBox(height: 5,),
 
-                    ListTile(
-                      title: Text("ListTile"),
-                      subtitle: Text("Material Components"),
-                      tileColor: Color(0xfff4f5f7),
+                    Divider(color: Colors.black12,),
+
+                    _WidgetTile(
+                      title: "ListTile",
+                      subtitle: "Material Components",
+                      favorite: true,
                       onTap: () {
                         print("Mostrar Widget ListTile");
                       },
                     ),
-                    const SizedBox(height: 5,),
 
-                    ListTile(
-                      title: Text("AlertDialog"),
-                      subtitle: Text("Material Components"),
-                      trailing: Icon(Icons.favorite, color: Colors.red,),
-                      tileColor: Color(0xfff4f5f7),
+                    Divider(color: Colors.black12,),
+
+                    _WidgetTile(
+                      title: "AlertDialog",
+                      subtitle: "Material Components",
                       onTap: () {
-                        print("Mostrar AlertDialog");
+                        print("Mostrar Alert Dialog");
                       },
-                    ),
+                    )
+
                   ],
                 ),
               ),
@@ -248,6 +250,36 @@ class _LayoutCard extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+// Widget personalizado _WidgetTile para encapsular la lógica y el diseño de los ListTile.
+// Este widget permite simplificar la creación de "tiles" con contenido dinámico
+// reduciendo la repeticion de código y facilitando la personalización
+class _WidgetTile extends StatelessWidget {
+
+  final String title;
+  final String subtitle;
+  final bool favorite;
+  final VoidCallback onTap;
+
+  const _WidgetTile({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+    this.favorite = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(title),
+      subtitle: Text(subtitle),
+      trailing: favorite ? Icon(Icons.favorite, color: Colors.red,) : null,
+      tileColor: Color(0xfff4f5f7),
+      onTap: onTap,
     );
   }
 }
