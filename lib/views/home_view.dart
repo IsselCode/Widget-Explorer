@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:widget_explorer/entities/category_entity.dart';
+import 'package:widget_explorer/entities/widget_entity.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -117,72 +118,23 @@ class HomeView extends StatelessWidget {
               child: Card(
                 elevation: 3,
                 color: Colors.white,
-                child: ListView(
+                child: ListView.builder(
                   padding: EdgeInsets.all(20),
-                  children: [
-
-                    _WidgetTile(
-                      title: "Material",
-                      subtitle: "Material Components",
+                  // Número total de elementos en la lista.
+                  itemCount: widgets.length,
+                  // La devolución de llamada itemBuilder se llamará solo con índices
+                  // mayores o iguales a cero y menores que itemCount
+                  itemBuilder: (context, index) {
+                    WidgetEntity widgetEntity = widgets[index]; // Obtiene el elemento actual.
+                    return _WidgetTile(
+                      title: widgetEntity.title,
+                      subtitle: widgetEntity.subtitle,
+                      favorite: widgetEntity.favorite,
                       onTap: () {
-                        print("Mostrar Widget Expanded");
+                        print("Mostrar ${widgetEntity.title}");
                       },
-                    ),
-
-                    Divider(color: Colors.black12,), // Separador visual entre elementos de la lista.
-
-                    _WidgetTile(
-                      title: "Expanded",
-                      subtitle: "Material Components",
-                      favorite: true,
-                      onTap: () {
-                        print("Mostrar Widget Expanded");
-                      },
-                    ),
-
-                    Divider(color: Colors.black12,),
-
-                    _WidgetTile(
-                      title: "Card",
-                      subtitle: "Material Components",
-                      onTap: () {
-                        print("Mostrar Widget Card");
-                      },
-                    ),
-
-                    Divider(color: Colors.black12,),
-
-                    _WidgetTile(
-                      title: "Divider",
-                      subtitle: "Material Components",
-                      favorite: true,
-                      onTap: () {
-                        print("Mostrar Widget Divider");
-                      },
-                    ),
-
-                    Divider(color: Colors.black12,),
-
-                    _WidgetTile(
-                      title: "ListTile",
-                      subtitle: "Material Components",
-                      favorite: true,
-                      onTap: () {
-                        print("Mostrar Widget ListTile");
-                      },
-                    ),
-
-                    Divider(color: Colors.black12,),
-
-                    _WidgetTile(
-                      title: "AlertDialog",
-                      subtitle: "Material Components",
-                      onTap: () {
-                        print("Mostrar Alert Dialog");
-                      },
-                    )
-
-                  ],
+                    );
+                  },
                 ),
               ),
             )

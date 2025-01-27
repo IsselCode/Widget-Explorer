@@ -1,25 +1,24 @@
-# Capítulo 14: Uso del Widget Divider
+# Capítulo 15: Uso del ListView.builder
 
 ## Objetivo
 
-En este capítulo, aprenderás a utilizar el widget **Divider** para separar visualmente los elementos en una lista. Además, se optimizó el código mediante la creación del widget personalizado **_WidgetTile**, que encapsula la lógica y diseño de los elementos de la lista.
+En este capítulo, aprenderás a utilizar el widget **ListView.builder** para generar listas dinámicas basadas en datos. Además, se creó la entidad **WidgetEntity** para estructurar y organizar los datos de cada elemento de la lista, simulando un flujo típico de aplicaciones reales que manejan datos provenientes de APIs o bases de datos.
 
 ---
 
 ## Desarrollo
 
-1. **Divider**: Se utilizó para agregar una línea divisoria entre los elementos de la lista, mejorando la organización visual.
-2. **_WidgetTile**: Se creó un widget personalizado basado en **ListTile** para reducir la repetición de código y permitir la personalización de cada elemento con propiedades como `title`, `subtitle`, `favorite` y `onTap`.
-3. **Optimización del código**: Se reemplazaron los elementos repetitivos de **ListTile** por instancias de **_WidgetTile**, asegurando consistencia y claridad en el diseño.
+1. **WidgetEntity**: Se creó una nueva entidad para representar los datos de cada elemento de la lista, incluyendo las propiedades `title`, `subtitle` y `favorite`.
+2. **Lista de widgets**: Se definió una lista estática de instancias de **WidgetEntity** para simular datos dinámicos.
+3. **ListView.builder**: Se implementó para generar automáticamente los elementos de la lista en función de la cantidad de datos disponibles en la lista de widgets.
+4. **_WidgetTile**: Se reutilizó el widget personalizado creado en capítulos anteriores para renderizar cada elemento de la lista, asegurando consistencia y claridad en el diseño.
 
 ---
 
 ## Conclusión
 
-El widget **Divider** es una herramienta simple pero efectiva para organizar elementos en listas. Combinado con widgets personalizados como **_WidgetTile**, permite crear interfaces limpias, reutilizables y fáciles de mantener. Este enfoque es fundamental para desarrollar aplicaciones escalables y bien estructuradas.
+El widget **ListView.builder** es una herramienta esencial para crear listas dinámicas y escalables en Flutter. Junto con entidades como **WidgetEntity**, permite manejar datos de manera profesional, mejorando la organización y adaptabilidad del código.
 
-En el próximo capítulo, exploraremos aún más Widgets. ¡Hasta pronto! 🚀
+En el siguiente capítulo, exploraremos más Widgets. ¡Hasta pronto! 🚀
 
 ---
-
-![Cap14](readme_assets/cap14.png)
