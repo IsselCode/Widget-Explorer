@@ -1,48 +1,214 @@
-# Capítulo 17: Introducción al InheritedWidget
+# Capítulo 18: Introducción al StatefulWidget y su Ciclo de Vida
 
 ## Objetivo
 
-En este capítulo, aprenderás a utilizar el **InheritedWidget**, un widget especial en Flutter que permite compartir datos entre widgets de una manera eficiente sin necesidad de pasarlos manualmente a través del árbol de widgets. Este enfoque es una excelente introducción para entender la gestión de estado en aplicaciones Flutter.
+En este capítulo, aprenderás qué es un **StatefulWidget** y cómo manejar su ciclo de vida en Flutter. Los widgets con estado son fundamentales para crear interfaces dinámicas e interactivas, ya que permiten gestionar y actualizar su estado de manera eficiente.
 
 ---
 
-## Desarrollo
+## StatefulWidget: Conceptos Básicos
 
-### Pasos Realizados
+Un **StatefulWidget** se compone de dos clases:
+1. **La clase del widget**: Define la configuración del widget.
+2. **La clase del estado**: Contiene la lógica y las variables que definen el estado mutable del widget.
 
-1. **Creación de la clase `Idioma`**:
-   - Se implementó la clase `Idioma`, que extiende de `InheritedWidget`. Esta clase permite compartir la propiedad `idioma` con cualquier widget dentro del árbol que la necesite.
-   - La propiedad `idioma` contiene el valor que será accesible desde otros widgets.
+### Ejemplo de un StatefulWidget:
 
-2. **Métodos Clave en `InheritedWidget`**:
-   - **`of()`**: Método estático que permite acceder al widget `Idioma` desde el contexto.
-   - **`updateShouldNotify()`**: Método que indica si los widgets dependientes deben reconstruirse cuando el valor de `idioma` cambia.
+```dart
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
 
-3. **Creación de Widgets**:
-   - **`ExampleWidget`**: Muestra el valor actual de la propiedad `idioma` y contiene un botón para navegar al siguiente widget.
-   - **`ExampleWidget2`**: Muestra el valor de `idioma` en una nueva pantalla con un botón en el AppBar para regresar.
+class _MyWidgetState extends State<MyWidget> {
+  String texto = "Hola, mundo";
 
-4. **Configuración de `MaterialApp`**:
-   - El widget `Idioma` envuelve al `MaterialApp`, permitiendo que el valor de `idioma` esté disponible en todo el árbol de widgets.
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(texto),
+    );
+  }
+}
+```
 
----
+### Ciclo de Vida de un StatefulWidget
 
-## ¿Qué es el InheritedWidget?
+El ciclo de vida de un StatefulWidget se maneja mediante la clase State, que define una serie de métodos clave. A continuación, se explica cada uno en orden de ejecución:
 
-El **InheritedWidget** es una clase base que Flutter proporciona para compartir datos entre widgets en el árbol sin tener que pasarlos manualmente a través de los constructores. Es la base para herramientas avanzadas de gestión de estado como **Provider**.
+1. initState()
+   * Descripción: Se llama una sola vez cuando el objeto State se crea.
+   * Propósito: Ideal para inicializar variables, listeners o controladores.
 
----
+```dart
+@override
+void initState() {
+  super.initState();
+  print("Widget inicializado");
+}
+```
 
-## Ventajas de Usar InheritedWidget
+2. didChangeDependencies()
+   * Descripción: Se llama después de initState() y cuando cambian las dependencias del widget.
+   * Propósito: Ideal para usar dependencias provenientes de InheritedWidgets.
 
-1. **Eficiencia**: Solo los widgets que dependen del **InheritedWidget** se reconstruyen cuando los datos cambian.
-2. **Simplicidad**: Reduce la necesidad de pasar datos manualmente por múltiples niveles del árbol de widgets.
-3. **Escalabilidad**: Facilita la gestión de estado en aplicaciones grandes al centralizar los datos compartidos.
+```dart
+@override
+void didChangeDependencies() {
+  super.didChangeDependencies();
+  print("Dependencias cambiaron");
+}
+```
 
----
+3. build()
+   * Descripción: Este método se llama cada vez que el widget necesita renderizarse o actualizarse en pantalla.
+   * Propósito: Define la interfaz visual del widget.
 
-## Conclusión
+```dart
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(title: Text("Ejemplo StatefulWidget")),
+    body: Center(child: Text("Hola, mundo")),
+  );
+}
+```
 
-El uso del **InheritedWidget** en Flutter es un concepto fundamental para manejar el estado compartido de forma eficiente. Este capítulo sienta las bases para entender técnicas avanzadas de gestión de estado y preparar el camino hacia el siguiente capítulo sobre **StatefulWidget**.
+4. didUpdateWidget()
+   * Descripción: Se llama cuando el widget padre recrea el widget actual y pasa un nuevo objeto de configuración.
+   * Propósito: Manejar cambios en las propiedades del widget.
 
-En el próximo capítulo, exploraremos cómo combinar estos conceptos con el **StatefulWidget** para manejar estados dinámicos y actualizables. ¡Sigue aprendiendo y construyendo! 🚀
+4.1 ¿Cuándo se llama didUpdateWidget()?
+* Cuando el widget padre crea un nuevo objeto del mismo tipo que el widget actual, pero con propiedades diferentes.
+* No ocurre al cambiar el estado interno del widget, sino cuando los parámetros o propiedades recibidas cambian.
+
+```dart
+@override
+void didUpdateWidget(covariant MyWidget oldWidget) {
+  super.didUpdateWidget(oldWidget);
+  print("Widget actualizado");
+}
+```
+
+5. setState()
+   * Descripción: Notifica a Flutter que el estado del widget ha cambiado y necesita reconstruirse.
+   * Propósito: Actualizar dinámicamente la interfaz del usuario.
+
+```dart
+void cambiarTexto() {
+  setState(() {
+    texto = "Texto actualizado";
+  });
+}
+```
+
+6. deactivate()
+   * Descripción: Se llama cuando el widget está en proceso de ser eliminado del árbol de widgets.
+   * Propósito: Usado para manejar desconexiones temporales o tareas antes de la destrucción.
+
+```dart
+@override
+void deactivate() {
+  super.deactivate();
+  print("Widget desactivado");
+}
+```
+
+7. dispose()
+   * Descripción: Se llama una sola vez cuando el objeto State es eliminado permanentemente.
+   * Propósito: Liberar recursos como controladores, listeners o streams.
+
+```dart
+@override
+void dispose() {
+  super.dispose();
+  print("Widget destruido");
+}
+```
+
+### Resumen del Ciclo de Vida
+El ciclo de vida de un StatefulWidget sigue este orden:
+
+1. initState() → Inicialización del estado.
+2. didChangeDependencies() → Configuración de dependencias.
+3. build() → Construcción o actualización del widget.
+4. didUpdateWidget() → Manejo de cambios en las propiedades.
+5. deactivate() → Desactivación del widget antes de su eliminación.
+6. dispose() → Limpieza de recursos.
+
+### Ejemplo Completo del Ciclo de Vida:
+
+```dart
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  String texto = "Hola, mundo";
+
+  @override
+  void initState() {
+    super.initState();
+    print("Widget inicializado");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("Dependencias cambiaron");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Ciclo de Vida")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(texto),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  texto = "Texto actualizado";
+                });
+              },
+              child: Text("Actualizar Texto"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant MyWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("Widget actualizado");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("Widget desactivado");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("Widget destruido");
+  }
+}
+```
+
+### Conclusión
+Este capítulo marca un paso importante hacia la comprensión del desarrollo de aplicaciones dinámicas e interactivas en Flutter. El manejo de StatefulWidgets es esencial para gestionar estados y crear experiencias personalizadas para los usuarios.
+
+#### Puntos clave:
+1. Estado mutable: Los StatefulWidgets permiten cambiar dinámicamente la interfaz de usuario.
+2. Ciclo de vida del estado: Conocer los métodos como initState(), build() y dispose() te permitirá manejar cada etapa del widget de manera efectiva.
+3. setState(): Es la clave para actualizar la interfaz de usuario en tiempo de ejecución.
+4. Optimización: Usar correctamente los métodos del ciclo de vida asegura un rendimiento eficiente de la aplicación.
+
+En el próximo capítulo, comenzaremos a combinar estos conceptos con la interacción del usuario para manejar entradas y datos de manera avanzada. ¡Sigue practicando y explorando! 🚀
