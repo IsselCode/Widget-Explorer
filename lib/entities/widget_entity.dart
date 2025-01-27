@@ -19,31 +19,31 @@ List<WidgetEntity> widgets = [
   WidgetEntity(
     title: "Material",
     subtitle: "Material Components",
-    favorite: true
+    favorite: true,
   ),
   WidgetEntity(
     title: "Expanded",
     subtitle: "Material Components",
-    favorite: false
+    favorite: false,
   ),
   WidgetEntity(
     title: "Card",
     subtitle: "Material Components",
-    favorite: false
+    favorite: false,
   ),
   WidgetEntity(
     title: "Divider",
     subtitle: "Material Components",
-    favorite: true
+    favorite: true,
   ),
   WidgetEntity(
     title: "ListTile",
     subtitle: "Material Components",
-    favorite: true
+    favorite: true,
   ),
   WidgetEntity(
     title: "AlertDialog",
-    subtitle: "Material Components",
-    favorite: false
+    subtitle: "Dialogs",
+    favorite: false,
   ),
 ];

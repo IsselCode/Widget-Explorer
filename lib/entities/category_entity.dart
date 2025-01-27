@@ -23,23 +23,23 @@ List<CategoryEntity> categories = [
   ),
   CategoryEntity(
     image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_2.png",
-    title: "Material Components",
+    title: "Input",
     subtitle: "12 Widgets",
   ),
   CategoryEntity(
     image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_3.png",
-    title: "Material Components",
+    title: "Basics",
     subtitle: "15 Widgets",
   ),
   CategoryEntity(
     image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_4.png",
-    title: "Material Components",
+    title: "Animation and motion",
     subtitle: "7 Widgets",
   ),
   CategoryEntity(
     image: "https://flutter.github.io/assets-for-api-docs/assets/material/content_based_color_scheme_5.png",
-    title: "Diálogos",
-    subtitle: "4 Diálogos",
+    title: "Dialogs",
+    subtitle: "4 Dialogs",
   ),
 
 ];

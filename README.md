@@ -1,8 +1,12 @@
-# Capítulo 20: Uso del SingleChildScrollView
+# Capítulo 21: Filtrado Dinámico por Categoría Seleccionada
 
 ## Objetivo
 
-En este capítulo, aprenderás a utilizar el widget **SingleChildScrollView** para manejar correctamente el problema del teclado virtual que reduce el espacio disponible en la interfaz. Este enfoque permite desplazarse por el contenido incluso cuando el teclado está visible, mejorando la experiencia del usuario.
+En este capítulo, aprenderás a implementar un filtrado dinámico basado en dos criterios:
+1. **Categoría seleccionada**: Filtrar los widgets según la categoría elegida.
+2. **Texto ingresado**: Mostrar únicamente los widgets cuyo título comience con el texto ingresado en el campo.
+
+Además, se mejora la experiencia visual al cambiar el color de los textos para la categoría seleccionada.
 
 ---
 
@@ -10,19 +14,24 @@ En este capítulo, aprenderás a utilizar el widget **SingleChildScrollView** pa
 
 ### Cambios Realizados
 
-1. **Uso de SingleChildScrollView**:
-   - Se envolvió el contenido principal con un **SingleChildScrollView** para permitir el desplazamiento cuando el teclado reduce el espacio visible.
+1. **Propiedad `selectedCategory`**:
+   - Se añadió una propiedad de tipo `String?` que representa la categoría seleccionada por el usuario.
 
-2. **Reemplazo de Expanded**:
-   - Se reemplazó el **Expanded** por un **SizedBox** con altura definida para ajustar el diseño según las necesidades de la interfaz.
+2. **Verificación de nulidad**:
+   - Al filtrar los widgets, se verificó si hay una categoría seleccionada:
+      - **Si es nula**: Filtrar únicamente por el valor del campo de texto.
+      - **Si no es nula**: Filtrar tanto por el valor del campo de texto como por la categoría seleccionada.
 
-3. **Manejo del ListView**:
-   - El **ListView.separated** se mantiene dentro de un **Card**, proporcionando un diseño consistente con bordes redondeados y un fondo blanco.
+3. **Selección y des-selección de categorías**:
+   - Al seleccionar una categoría, se comprueba si es la misma que la actualmente seleccionada:
+      - **Si es igual**: Se des-selecciona.
+      - **Si es diferente**: Se asigna como la categoría seleccionada.
+
+4. **Propiedad `selected` en `_LayoutCard`**:
+   - Se añadió una nueva propiedad al `_LayoutCard` para cambiar el color del texto dependiendo de si la categoría está seleccionada.
 
 ---
 
 ## Conclusión
 
-El **SingleChildScrollView** es una solución sencilla y efectiva para manejar contenido desplazable cuando el teclado virtual aparece, asegurando que los elementos de la interfaz sigan siendo accesibles. Este capítulo demuestra cómo combinar este widget con otros para mantener un diseño organizado y funcional.
-
-En el próximo capítulo, exploraremos más formas de optimizar la interfaz para casos avanzados. ¡Sigue aprendiendo y construyendo! 🚀
+Este capítulo demuestra cómo combinar múltiples criterios para filtrar dinámicamente una lista, proporcionando una experiencia de usuario interactiva y visualmente atractiva. En el próximo capítulo, exploraremos cómo añadir más interactividad y detalles visuales. ¡Sigue aprendiendo y desarrollando! 🚀

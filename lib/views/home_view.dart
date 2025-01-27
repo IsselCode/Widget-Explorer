@@ -13,6 +13,8 @@ class _HomeViewState extends State<HomeView> {
 
   // Lista dinámica que se actualiza en tiempo real con los elementos filtrados.
   late List<WidgetEntity> widgetEntities;
+  // Una propiedad que representa la categoría seleccionada
+  String? selectedCategory;
 
   // Método del ciclo de vida: Inicializa los datos al cargar el widget.
   @override
@@ -32,7 +34,21 @@ class _HomeViewState extends State<HomeView> {
 
     widgetEntities = widgets.where((element) {
       // Retorna solo los elementos cuyo título comience con el valor ingresado.
-      return element.title.startsWith(value);
+      // Se puede filtrar de esta manera, pero al des-seleccionar ya no obtendriamos todos los widgets
+      // return element.title.startsWith(value) && element.subtitle == (selectedCategory ?? "");
+      // Tambien de esta otra manera, pero no sería lo correcto, la categoría debe ser exacta
+      // return element.title.startsWith(value) && element.subtitle.startsWith(selectedCategory ?? "");
+
+      // Se condiciona o verifica la nulidad de la categoría seleccionada
+      // Sí no es nula, quiere decir que el usuario seleccionó alguna.
+      if (selectedCategory != null) {
+        // De no ser nula, filtrar por el valor y categoría
+        return element.title.startsWith(value) && element.subtitle == selectedCategory;
+      } else {
+        // De ser nula, solo filtrar por el valor del campo de texto
+        return element.title.startsWith(value);
+      }
+
     },).toList();
 
     // Notifica a Flutter que el estado ha cambiado y la interfaz debe reconstruirse.
@@ -126,7 +142,18 @@ class _HomeViewState extends State<HomeView> {
                   itemSnapping: true,
                   flexWeights: const [1, 7, 1],
                   onTap: (value) {
-                    print(value);
+
+                    // Se comprueba si la categoría seleccionada
+                    // Es la misma que la que se seleccionó
+                    if (selectedCategory == categories[value].title){
+                      // de ser la misma, des-seleccionarla
+                      selectedCategory = null;
+                    } else {
+                      // de no ser la misma, asignarla a la categoría seleccionada
+                      selectedCategory = categories[value].title;
+                    }
+                    // Llamar al método para buscar los widgets
+                    buscarWidgets("");
                   },
                   // Generación dinámica de tarjetas utilizando List.generate.
                   // Esto recorre la lista de categorías y crea una tarjeta por cada objeto.
@@ -139,6 +166,8 @@ class _HomeViewState extends State<HomeView> {
                       Esto asegura que cada tarjeta sea personalizada con los datos de la categoría correspondiente.
                       */
                       return _LayoutCard(
+                        // Comparar por el nombre
+                        selected: category.title == selectedCategory,
                         image: category.image,
                         title: category.title,
                         subtitle: category.subtitle,
@@ -209,9 +238,13 @@ class _LayoutCard extends StatelessWidget {
   final String image; // Imagen dinámica que se mostrará como fondo de la tarjeta.
   final String title; // Título dinámico de la tarjeta.
   final String subtitle; // Subtítulo dinámico de la tarjeta.
-
   // Constructor que recibe las propiedades necesarias para personalizar cada tarjeta.
+
+  // Crear propiedad para indicar si la tarjeta está seleccionada o no
+  final bool selected;
+
   const _LayoutCard({
+    required this.selected,
     required this.image,
     required this.title,
     required this.subtitle,
@@ -241,7 +274,8 @@ class _LayoutCard extends StatelessWidget {
                 title,
                 softWrap: false,
                 style: TextStyle(
-                  color: Colors.white,
+                  // cambiar color si está seleccionada
+                  color: selected ? Colors.blue : Colors.white,
                   fontSize: 30,
                   fontWeight: FontWeight.w500,
                 ),
@@ -250,7 +284,8 @@ class _LayoutCard extends StatelessWidget {
                 subtitle,
                 softWrap: false,
                 style: TextStyle(
-                  color: Colors.white,
+                  // cambiar color si está seleccionada
+                  color: selected ? Colors.blue : Colors.white,
                   fontSize: 20,
                 ),
               ),
