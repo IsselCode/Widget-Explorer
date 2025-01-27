@@ -1,12 +1,8 @@
-# Capítulo 21: Filtrado Dinámico por Categoría Seleccionada
+# Capítulo 22: Uso de TextEditingController
 
 ## Objetivo
 
-En este capítulo, aprenderás a implementar un filtrado dinámico basado en dos criterios:
-1. **Categoría seleccionada**: Filtrar los widgets según la categoría elegida.
-2. **Texto ingresado**: Mostrar únicamente los widgets cuyo título comience con el texto ingresado en el campo.
-
-Además, se mejora la experiencia visual al cambiar el color de los textos para la categoría seleccionada.
+En este capítulo, aprenderás a usar el **TextEditingController** para gestionar y acceder dinámicamente al contenido de un campo de texto. Además, se solucionó un problema relacionado con el filtrado dinámico por texto y categoría, asegurando un comportamiento consistente incluso al seleccionar o deseleccionar categorías mientras hay un valor en el campo de texto.
 
 ---
 
@@ -14,24 +10,21 @@ Además, se mejora la experiencia visual al cambiar el color de los textos para 
 
 ### Cambios Realizados
 
-1. **Propiedad `selectedCategory`**:
-   - Se añadió una propiedad de tipo `String?` que representa la categoría seleccionada por el usuario.
+1. **Implementación de TextEditingController**:
+   - Se añadió un **TextEditingController** para manejar el valor actual del campo de texto.
+   - Este controlador permite acceder al texto ingresado sin necesidad de depender únicamente de los eventos como `onSubmitted`.
 
-2. **Verificación de nulidad**:
-   - Al filtrar los widgets, se verificó si hay una categoría seleccionada:
-      - **Si es nula**: Filtrar únicamente por el valor del campo de texto.
-      - **Si no es nula**: Filtrar tanto por el valor del campo de texto como por la categoría seleccionada.
+2. **Resolución del Problema de Filtrado**:
+   - Al seleccionar o deseleccionar una categoría, ahora se utiliza el valor actual del campo de texto mediante el `TextEditingController`.
+   - Esto asegura que el filtrado sea consistente y que los resultados mostrados sean correctos.
 
-3. **Selección y des-selección de categorías**:
-   - Al seleccionar una categoría, se comprueba si es la misma que la actualmente seleccionada:
-      - **Si es igual**: Se des-selecciona.
-      - **Si es diferente**: Se asigna como la categoría seleccionada.
-
-4. **Propiedad `selected` en `_LayoutCard`**:
-   - Se añadió una nueva propiedad al `_LayoutCard` para cambiar el color del texto dependiendo de si la categoría está seleccionada.
+3. **Flujo Mejorado de Selección**:
+   - Al seleccionar o deseleccionar una categoría, se invoca el método de búsqueda (`buscarWidgets`) con el texto actual del campo de texto para actualizar la lista filtrada en tiempo real.
 
 ---
 
 ## Conclusión
 
-Este capítulo demuestra cómo combinar múltiples criterios para filtrar dinámicamente una lista, proporcionando una experiencia de usuario interactiva y visualmente atractiva. En el próximo capítulo, exploraremos cómo añadir más interactividad y detalles visuales. ¡Sigue aprendiendo y desarrollando! 🚀
+El uso de **TextEditingController** permite gestionar de manera eficiente el contenido de los campos de texto, resolviendo problemas de sincronización entre el texto ingresado y otras interacciones de la interfaz, como la selección de categorías. Este capítulo destaca la importancia de manejar adecuadamente los controladores para garantizar un comportamiento coherente y fluido en aplicaciones interactivas.
+
+En el siguiente capítulo, exploraremos más técnicas para mejorar la gestión del estado y la interactividad en Flutter. ¡Sigue desarrollando y aprendiendo! 🚀

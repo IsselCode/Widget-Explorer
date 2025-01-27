@@ -11,6 +11,10 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
 
+  // El TextEditingController se usa para controlar y manejar el texto dentro
+  // de un TextField o TextFormField. Permite leer, modificar o escuchar cambios en el texto.
+  // Se usará para leer el texto que sea ingresado en el campo de busqueda
+  TextEditingController searchController = TextEditingController();
   // Lista dinámica que se actualiza en tiempo real con los elementos filtrados.
   late List<WidgetEntity> widgetEntities;
   // Una propiedad que representa la categoría seleccionada
@@ -25,28 +29,17 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
   }
 
-  /*
-    Método buscarWidgets:
-    - Filtra los elementos de la lista original (widgets) que comienzan con el valor ingresado.
-    - Utiliza setState() para reconstruir el widget con los resultados filtrados.
-  */
-  void buscarWidgets(String value) {
+  // Ya no se necesita ningun parametro, ya que el valor del campo de texto
+  // se obtendrá desde el contralador
+  void buscarWidgets() {
 
     widgetEntities = widgets.where((element) {
-      // Retorna solo los elementos cuyo título comience con el valor ingresado.
-      // Se puede filtrar de esta manera, pero al des-seleccionar ya no obtendriamos todos los widgets
-      // return element.title.startsWith(value) && element.subtitle == (selectedCategory ?? "");
-      // Tambien de esta otra manera, pero no sería lo correcto, la categoría debe ser exacta
-      // return element.title.startsWith(value) && element.subtitle.startsWith(selectedCategory ?? "");
-
-      // Se condiciona o verifica la nulidad de la categoría seleccionada
-      // Sí no es nula, quiere decir que el usuario seleccionó alguna.
       if (selectedCategory != null) {
-        // De no ser nula, filtrar por el valor y categoría
-        return element.title.startsWith(value) && element.subtitle == selectedCategory;
+        // se lee el texto del controlador
+        return element.title.startsWith(searchController.text) && element.subtitle == selectedCategory;
       } else {
-        // De ser nula, solo filtrar por el valor del campo de texto
-        return element.title.startsWith(value);
+        // se lee el texto del controlador
+        return element.title.startsWith(searchController.text);
       }
 
     },).toList();
@@ -110,8 +103,10 @@ class _HomeViewState extends State<HomeView> {
             children: [
               // Se agrega un TextField para el campo de búsqueda.
               TextField(
+                // Se asigna el controlador al text field
+                controller: searchController,
                 // TextField: Campo de texto para que el usuario ingrese el filtro.
-                onSubmitted: buscarWidgets,
+                onSubmitted: (value) => buscarWidgets(),
                 // onChanged: buscarWidgets,
                 decoration: InputDecoration(
                   hintText: "Buscar Widget", // Texto de sugerencia que indica la función del campo.
@@ -153,7 +148,7 @@ class _HomeViewState extends State<HomeView> {
                       selectedCategory = categories[value].title;
                     }
                     // Llamar al método para buscar los widgets
-                    buscarWidgets("");
+                    buscarWidgets();
                   },
                   // Generación dinámica de tarjetas utilizando List.generate.
                   // Esto recorre la lista de categorías y crea una tarjeta por cada objeto.
