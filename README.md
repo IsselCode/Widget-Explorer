@@ -1,26 +1,25 @@
-# Capítulo 11: ListView y ListTile
+# Capítulo 12: Uso del Widget Expanded
 
 ## Objetivo
 
-En este capítulo, aprenderás a utilizar los widgets **ListView** y **ListTile** para crear listas simples y funcionales. Además, exploraremos cómo definir un tamaño fijo para una lista y cómo interactuar con los elementos a través de eventos como `onTap`.
+En este capítulo, aprenderás a usar el widget **Expanded** para ajustar dinámicamente el tamaño de un widget secundario dentro de un contenedor flexible. En este caso, **ListView** se envolvió con **Expanded** para permitir que ocupe el espacio disponible dentro de un diseño de tipo columna o fila.
 
 ---
 
 ## Desarrollo
 
-1. **ListView**: Se utilizó para mostrar una lista de elementos desplazables en un espacio limitado.
-2. **ListTile**: Se implementó para representar cada elemento de la lista, aprovechando su diseño predeterminado que incluye `title`, `subtitle`, `leading`, `trailing` y eventos como `onTap`.
-3. Se añadió un nuevo elemento a la lista de categorías: "Diálogos", ampliando el contenido mostrado en capítulos anteriores.
-4. El código incluye el uso de `SizedBox` para controlar el espaciado entre los elementos y definir el tamaño de la lista.
+1. Se utilizó **Expanded** para envolver un **ListView**, permitiendo que este último ajuste su tamaño automáticamente al espacio disponible.
+2. **Expanded** es útil en diseños flexibles con widgets como **Column** o **Row**, asegurando que los elementos secundarios no excedan los límites del contenedor padre.
+3. Este enfoque elimina la necesidad de definir un tamaño fijo, como se hizo en capítulos anteriores, ofreciendo un diseño más adaptable.
 
 ---
 
 ## Conclusión
 
-El uso de widgets como **ListView** y **ListTile** es fundamental para mostrar listas de contenido de manera eficiente y personalizable en aplicaciones Flutter. Este capítulo demuestra cómo estructurar una lista con propiedades simples y añadir interactividad con `onTap`.
+El widget **Expanded** es una herramienta esencial para construir diseños responsivos y flexibles en Flutter. Este capítulo demuestra cómo aprovechar **Expanded** para manejar espacios dinámicos en la interfaz, mejorando la adaptabilidad de las aplicaciones.
 
-En el siguiente capítulo, exploraremos aún más widgets. ¡Sigue aprendiendo y construyendo! 🚀
+En el siguiente capítulo, exploraremos el uso combinado de más widgets para crear interfaces avanzadas y prácticas. ¡Sigue aprendiendo y practicando! 🚀
 
 ---
 
-![Cap11](readme_assets/cap11.png)
+![Cap12](readme_assets/cap12.png)

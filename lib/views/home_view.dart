@@ -108,38 +108,31 @@ class HomeView extends StatelessWidget {
 
             const SizedBox(height: 20,),
 
-            SizedBox(
-              height: 250, // Define un tamaño fijo para la altura del ListView.
+            /*
+              Expanded: Este widget permite que un hijo dentro de un diseño flexible (Column o Row)
+              ocupe todo el espacio disponible restante. Es especialmente útil para adaptarse
+              a diferentes tamaños de pantalla sin necesidad de especificar tamaños fijos.
+            */
+            Expanded(
               /*
-                ListView: Este widget permite mostrar una lista desplazable de elementos.
-                En este caso, ListView tiene hijos directos definidos como una lista en el atributo `children`.
+                ListView: Al envolverlo en un Expanded, este widget desplazable se ajusta
+                automáticamente al espacio disponible dentro de su contenedor padre (Column).
+                Esto hace que el diseño sea más responsivo y elimina la necesidad de un tamaño fijo.
               */
               child: ListView(
                 children: [
-                  /*
-                    ListTile: Un widget optimizado para mostrar elementos de lista.
-                    Incluye propiedades como:
-                      - `title`: Título del elemento.
-                      - `subtitle`: Texto descriptivo secundario.
-                      - `onTap`: Evento que se ejecuta al hacer clic en el elemento.
-                      - `trailing`: Widget opcional que se muestra al final del elemento.
-                  */
                   ListTile(
-                    title: Text("Material"), // Título del ListTile.
-                    subtitle: Text("Material Components"), // Subtítulo para mayor contexto.
-                    /*
-                      onTap: Acción ejecutada al interactuar con el ListTile.
-                      En este caso, imprime un mensaje en la consola.
-                    */
+                    title: Text("Material"),
+                    subtitle: Text("Material Components"),
                     onTap: () {
                       print("Mostrar Widget Expanded");
                     },
                   ),
-                  const SizedBox(height: 5,), // Espaciado entre elementos de la lista.
+                  const SizedBox(height: 5,),
 
                   ListTile(
                     title: Text("Expanded"),
-                    trailing: Icon(Icons.favorite, color: Colors.red,), // Ícono al final del ListTile.
+                    trailing: Icon(Icons.favorite, color: Colors.red,),
                     subtitle: Text("Material Components"),
                     onTap: () {
                       print("Mostrar Widget Expanded");
@@ -177,7 +170,7 @@ class HomeView extends StatelessWidget {
                   ListTile(
                     title: Text("AlertDialog"),
                     subtitle: Text("Material Components"),
-                    trailing: Icon(Icons.favorite, color: Colors.red,), // Ícono destacado con un color rojo.
+                    trailing: Icon(Icons.favorite, color: Colors.red,),
                     onTap: () {
                       print("Mostrar AlertDialog");
                     },
